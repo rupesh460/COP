@@ -1,0 +1,122 @@
+<template>
+    <lightning-card title="CMT package: Performance Recommendations">
+
+        <lightning-card>
+            <div class="row slds-var-p-around_xx-small " >
+                <div class="slds-text-title_bold column">Recommended CPQ Settings</div>
+            <div class="column">
+                <lightning-button variant="brand" label="Refresh" title="Primary action" onclick={handleGetSettings}  class="slds-var-m-left_x-small slds-float_right slds-var-p-right_medium"></lightning-button>
+            </div>
+            </div>
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered slds-table_striped slds-var-p-top_x-large slds-var-p-around_xx-small slds-cell-wrap" >
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col">
+                            <div title="Key">Custom Settings</div>
+                        </th>
+                        <th scope="col">
+                            <div title="Value">Recommended value</div>
+                        </th>
+                        <th scope="col">
+                            <div title="Value">Current Value</div>
+                        </th>
+                        <th scope="col">
+                            <div title="Value">Impact</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={actualResults} for:item="map">
+                        <tr key={map.key} class="slds-cell-wrap">
+                            <td scope="col"  style={map.styleColor} class="slds-cell-wrap">
+                                <div  title={map.key}>{map.key}</div>
+                            </td>
+                            <td scope="col"  style={map.styleColor} class="slds-cell-wrap">
+                                <div title={map.key}>{map.value.Expected}</div>
+                            </td>
+                            <td scope="col" style={map.styleColor} class="slds-cell-wrap">
+                                <div title={map.key}>{map.value.Current}</div>
+                            </td>
+                            <td scope="col" class="slds-cell-wrap" style={map.styleColor}>
+                                <div title={map.key}>{map.value.Description}</div>
+                            </td>
+                        </tr>
+                    </template>
+            </tbody>
+            </table>
+            <!-- <div class="row slds-var-p-around_xx-small " >
+                <div class="slds-text-title_bold column">Recommended Features</div>
+            </div>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered slds-table_striped slds-var-p-top_x-large slds-var-p-around_xx-small slds-cell-wrap" >
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col">
+                            <div title="Key">Feature</div>
+                        </th>
+                        <th scope="col">
+                            <div title="Value">Recommended value</div>
+                        </th>
+                        <th scope="col">
+                            <div title="Value">Current Value</div>
+                        </th>
+                        <th scope="col">
+                            <div title="Value">Impact</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={actualResults2}>
+                    <template for:each={actualResults2} for:item="map">
+                        <tr key={map.key} class="slds-cell-wrap">
+                            <td scope="col"  style={map.styleColor} class="slds-cell-wrap">
+                                <div  title={map.key}>{map.key}</div>
+                            </td>
+                            <td scope="col"  style={map.styleColor} class="slds-cell-wrap">
+                                <div title={map.key}>{map.value.Expected}</div>
+                            </td>
+                            <td scope="col" style={map.styleColor} class="slds-cell-wrap">
+                                <div title={map.key}>{map.value.Current}</div>
+                            </td>
+                            <td scope="col" class="slds-cell-wrap" style={map.styleColor}>
+                                <div title={map.key}>{map.value.Description}</div>
+                            </td>
+                        </tr>
+                    </template>
+                </template>
+            </tbody>
+            </table> -->
+            <div class="row slds-var-p-around_xx-small " >
+                <div class="slds-text-title_bold column">Recommended Indexes</div>
+            </div>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_col-bordered slds-table_striped slds-var-p-top_x-large slds-var-p-around_xx-small slds-cell-wrap" style="width: 25%;">
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col" class="slds-size_1-of-3">
+                            <div title="Key">Object and Field</div>
+                        </th>
+                        <th scope="col">
+                            <div title="Value">Indexed</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template if:true={actualResults3}>
+                    <template for:each={actualResults3} for:item="map">
+                        <tr key={map.key}>
+                            <td scope="col"  style={map.styleColor} >
+                                <div  title={map.key}>{map.key}</div>
+                            </td>
+                            <td scope="col"  style={map.styleColor}>
+                                <div title={map.key}>{map.value}</div>
+                            </td>
+                            <!-- <td scope="col" class="slds-cell-wrap" style={map.styleColor}>
+                                <div title={map.value}>{map.value.Description}</div>
+                            </td> -->
+                        </tr>
+                    </template>
+                </template>
+            </tbody>
+            </table>
+        </lightning-card>
+    </lightning-card>
+</template>
